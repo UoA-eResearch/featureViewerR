@@ -1,0 +1,9 @@
+Package: featureViewerR
+Title: Visualise Protein Features
+Version: 0.0.1
+Authors@R: person("Nick", "Young", email = "nick.young@auckland.ac.nz", role = c("aut", "cre"))
+Description: Wrapper for feature-viewer
+Depends: R (>= 3.3.2)
+License: MIT
+Encoding: UTF-8
+LazyData: true
