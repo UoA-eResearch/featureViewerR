@@ -6,7 +6,7 @@ An R package that acts as an htmlwidgets wrapper for feature-viewer
 
 ```
 install.packages("devtools")
-`devtools::install_github("UoA-eResearch/featureViewerR")
+devtools::install_github("UoA-eResearch/featureViewerR")
 ```
 
 ## Usage:
