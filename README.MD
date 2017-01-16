@@ -1,11 +1,13 @@
 # featureViewerR
 
-A R package that acts as an htmlwidgets wrapper for feature-viewer
+An R package that acts as an htmlwidgets wrapper for feature-viewer
 
 ## Installation
 
-`install.packages("devtools")`
-`devtools::install_github("UoA-eResearch/featureViewerR")`
+```
+install.packages("devtools")
+`devtools::install_github("UoA-eResearch/featureViewerR")
+```
 
 ## Usage:
 
