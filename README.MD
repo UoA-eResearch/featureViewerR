@@ -15,7 +15,7 @@ devtools::install_github("UoA-eResearch/featureViewerR")
 library("featureViewerR")
 
 sequence <- "MALWMRLLPLLALLALWGPGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLE"
-features <- list(list(data = list(list(x = 20,y = 32)), name = "test feature 1", color = "#0F8292", type = "rect"))
+features <- list(list(data = list(list(x = 20,y = 32)), name = "test feature 1", className="test1", color = "#0F8292", type = "rect"))
 featureViewerR::featureViewer(sequence, features)
 
 # Shiny example
