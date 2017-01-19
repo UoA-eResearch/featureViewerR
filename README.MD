@@ -18,6 +18,13 @@ sequence <- "MALWMRLLPLLALLALWGPGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLE"
 features <- list(list(data = list(list(x = 20,y = 32)), name = "test feature 1", className="test1", color = "#0F8292", type = "rect"))
 featureViewerR::featureViewer(sequence, features)
 
+# Vignette
+
+vignette("simple_example")
+
+# Note: it may be necessary to build the vignette like so:
+devtools::install_github("UoA-eResearch/featureViewerR", build_vignettes = TRUE)
+
 # Shiny example
 
 library("shiny")
@@ -49,3 +56,5 @@ server = function(input, output) {
 
 shinyApp(ui = ui, server = server)
 ```
+
+
