@@ -82,12 +82,14 @@ features <- list(
        type = "rect"),
   list(data = apply(data,1,as.list), 
        name = "test feature 2", 
-       className="test1", 
+       className="test2",
        color = "#921f0f", 
        type = "line"))
 ```
 
 ## Plot
 
-featureViewer(test_region_seq, features)
+```{r}
+featureViewer(test_region_seq, features, width = 700)
+```
 
