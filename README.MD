@@ -16,7 +16,9 @@ library("featureViewerR")
 
 sequence <- "MALWMRLLPLLALLALWGPGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLE"
 features <- list(list(data = list(list(x = 20,y = 32)), name = "test feature 1", className="test1", color = "#0F8292", type = "rect"))
-featureViewerR::featureViewer(sequence, features)
+widget <- featureViewer(sequence, features)
+moreFeatures <- list(list(data = list(list(x = 30,y = 41)), name = "test feature 2", className="test2", color = "#FF0000", type = "rect"))
+widget + moreFeatures
 
 # Vignette
 

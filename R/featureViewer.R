@@ -5,7 +5,7 @@
 #' @import htmlwidgets
 #'
 #' @export
-featureViewer <- function(sequence,
+featureViewer <- function(sequence = NULL,
                           features = list(),
                           showAxis = TRUE,
                           showSequence = TRUE,
@@ -15,35 +15,57 @@ featureViewer <- function(sequence,
                           zoomMax = 1, #define the maximum range of the zoom
                           width = NULL,
                           height = NULL,
-                          elementId = NULL
+                          elementId = NULL,
+                          widget = NULL
 ) {
 
-  # create a list that contains the settings
-  settings <- list(
-    showAxis = showAxis,
-    showSequence = showSequence,
-    brushActive = brushActive, #zoom
-    toolbar = toolbar, #current zoom & mouse position
-    bubbleHelp = bubbleHelp,
-    zoomMax = zoomMax #define the maximum range of the zoom
-  )
+  if (!is.null(widget)) {
+    f = "function(el, x, features) {
+      console.log('appending', features);
+      x.features = x.features.concat(features);
+      add_features();
+    }"
+    htmlwidgets::onRender(widget, f, features)
+  } else {
+    # create a list that contains the settings
+    settings <- list(
+      showAxis = showAxis,
+      showSequence = showSequence,
+      brushActive = brushActive, #zoom
+      toolbar = toolbar, #current zoom & mouse position
+      bubbleHelp = bubbleHelp,
+      zoomMax = zoomMax #define the maximum range of the zoom
+    )
 
-  # pass the data and settings using 'x'
-  x <- list(
-    sequence = sequence,
-    features = features,
-    settings = settings
-  )
+    # pass the data and settings using 'x'
+    x <- list(
+      sequence = sequence,
+      features = features,
+      settings = settings
+    )
 
-  htmlwidgets::createWidget(
-    name = "featureViewer",
-    x,
-    width = width,
-    height = height,
-    package = "featureViewerR",
-    elementId = elementId
-  )
+    htmlwidgets::createWidget(
+      name = "featureViewer",
+      x,
+      width = width,
+      height = height,
+      package = "featureViewerR",
+      elementId = elementId
+    )
+  }
 }
+
+"+.featureViewer" <- function(e1, e2) {
+  if (is(e1, "featureViewer")) {
+    featureViewer(features=e2, widget=e1)
+  } else {
+    featureViewer(features=e1, widget=e2)
+  }
+}
+
+#' @rdname featureViewer-add
+#' @export
+"%+%" <- `+.featureViewer`
 
 #' Shiny bindings for featureViewer
 #'
